@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "https://yt-downloader-prod.onrender.com";
 let downloadBtn = document.getElementById('downloadBtn');
 let videoURL = document.getElementById('videoURL');
 let heading = document.getElementById('heading')
