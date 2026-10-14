@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body, #main{
+    width: 100vw;
+    height: 100vh;
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0f0f0f;
+}
+
+#heading{
+    margin-bottom: 4%;
+    color: antiquewhite;
+    font-weight: 600;
+    font-family: cursive;
+    font-size: 60px;
+}
+
+#inputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8%;
+}
+
+#videoURL{
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    background-color: #000000;
+    border-radius: 20px;
+    color: white;
+    width: 35vw;
+    box-shadow: 0px 0 0px 0.5px white;
+}
+
+#downloadBtn{
+    background-color: white;
+    border: none;
+    outline: none;
+    padding: 13px 25px;
+    border-radius: 50px;
+    font-family: cursive;
+    font-size: medium;
+    cursor: pointer;
+}
+#downloadBtn:hover{
+    scale: 0.99;
+}
+
+#thumbnail{
+    width: 500px;
+    margin-bottom: 5%;
+}
