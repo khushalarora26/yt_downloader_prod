@@ -6,12 +6,22 @@ import json
 import yt_dlp
 import re
 import os  # CHANGED: for building paths
+import shutil
 
 title = "video"
 path = ""  # CHANGED: will hold the downloaded file's location
 
 # CHANGED: backend/temp folder, created if it doesn't exist
 TEMP_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp")
+
+COOKIES_SRC = "/etc/secrets/cookies.txt"   # where Render mounts the secret file (read-only)
+COOKIES_PATH = "/tmp/cookies.txt"          # writable copy, because yt-dlp saves back to the cookie file
+
+if os.path.exists(COOKIES_SRC):
+    shutil.copy(COOKIES_SRC, COOKIES_PATH)
+
+def cookie_opts():
+    return {'cookiefile': COOKIES_PATH} if os.path.exists(COOKIES_PATH) else {}
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -38,7 +48,7 @@ def getAudioFormat(data):
 
 def getFormats(url):
     global title, path  # CHANGED: so the assignments below update the top-level variables
-    with yt_dlp.YoutubeDL({}) as ydl:
+    with yt_dlp.YoutubeDL(cookie_opts()) as ydl:
         info = ydl.extract_info(url, download=False)
 
 
@@ -73,6 +83,7 @@ def getFormats(url):
         }
         if os.path.exists(FFMPEG_PATH):          # only true on your Windows machine
             opts['ffmpeg_location'] = FFMPEG_PATH
+        opts.update(cookie_opts())
         return opts
 
 
@@ -83,7 +94,7 @@ CORS(app, origins=os.environ.get("ALLOWED_ORIGIN", "*"))
 @app.route("/info")
 def get_video_info():
     url = request.args.get('url', '')
-    with yt_dlp.YoutubeDL({}) as ydl:
+    with yt_dlp.YoutubeDL(cookie_opts()) as ydl:
         print('url : ' + url)
         info = ydl.extract_info(url, download=False)
         data = ydl.sanitize_info(info)
