@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090b">
+    <title>Choose format · yt downloader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span></div>
+
+    <div class="page">
+        <a class="back" href="index.html"><span aria-hidden="true">←</span> <span class="accent">yt</span> downloader</a>
+
+        <img id="thumbnail" class="thumb" alt="Video thumbnail">
+
+        <h2 id="title" class="video-title"></h2>
+        <p id="meta" class="video-meta"></p>
+
+        <div class="modes" role="tablist">
+            <button class="mode active" id="modeVideo" data-mode="video" role="tab" aria-selected="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>
+                <span class="mode-name">Video</span>
+                <span class="mode-count" id="countVideo"></span>
+            </button>
+            <button class="mode" id="modeAudio" data-mode="audio" role="tab" aria-selected="false">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>
+                <span class="mode-name">Audio only</span>
+                <span class="mode-count" id="countAudio"></span>
+            </button>
+        </div>
+
+        <div id="formats" class="formats" role="tabpanel"></div>
+        <p id="note" class="note"></p>
+    </div>
+
+    <div id="overlay" class="overlay hidden" role="status" aria-live="polite">
+        <div class="spinner big" aria-hidden="true"></div>
+        <p id="overlayText" class="overlay-text">Preparing your download…</p>
+        <p class="overlay-sub">This can take a minute for long videos. Please keep this tab open.</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="formats.js"></script>
+</body>
+</html>
