@@ -1,4 +1,4 @@
-const API_URL = "https://yt-downloader-prod.onrender.com";
+const API_URL = "https://yt-downloader-prod-1.onrender.com";
 
 // For local testing
 // const API_URL = "http://127.0.0.1:5000";
