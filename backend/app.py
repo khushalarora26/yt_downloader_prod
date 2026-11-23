@@ -133,16 +133,17 @@ def build_selector(format_id, kind):
 # Misc helpers
 # ---------------------------------------------------------------------------
 
+
 def base_opts():
-    """Options used for every yt-dlp call. noplaylist stops song 'queues' / playlists
-    from being downloaded even if a list= parameter slips through."""
     return {
         'noplaylist': True,
-        'quiet': True,
-        'no_warnings': True,
+        'quiet': False,
+        'no_warnings': False,
+        'verbose': True,
         'no_color': True,
         **cookie_opts(),
     }
+
 
 def error(message, status):
     return jsonify(error=message), status
