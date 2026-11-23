@@ -24,7 +24,8 @@ if os.path.exists(COOKIES_SRC):
     shutil.copy(COOKIES_SRC, COOKIES_PATH)
 
 def cookie_opts():
-    return {'cookiefile': COOKIES_PATH} if os.path.exists(COOKIES_PATH) else {}
+    #return {'cookiefile': COOKIES_PATH} if os.path.exists(COOKIES_PATH) else {}
+    return {}
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
